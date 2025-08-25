@@ -10,7 +10,6 @@
     --accent4: #3c68ee; /* bright blue */
     --header-h:64px;
   
-    /* for optional scroll drift (JS can tweak these) */
     --g1y:22%;
     --g2y:78%;
   }
