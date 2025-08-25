@@ -1,12 +1,17 @@
-# React + Vite
+# 🌸 Cosette’s Portfolio  
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to my personal portfolio website — a space where I showcase who I am, the work I’ve done, and the projects I’m passionate about.  
 
-Currently, two official plugins are available:
+## 🌐 Live Site  
+👉 [cosettekay.github.io/cosette](https://cosettekay.github.io/cosette/)  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ About  
+This portfolio highlights my journey as a **Software Engineer** with experience in:  
+- **Automation & QA** – building reliable test frameworks and CI/CD pipelines.  
+- **Web & Mobile Development** – creating responsive web applications and Android/iOS apps
+- **AI/LLM Projects** – experimenting with LLM models, ML libraries and chatbots
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📬 Connect  
+- [LinkedIn](https://www.linkedin.com/in/cosette-tabucol/)  
+- [GitHub](https://github.com/cosettekay)  
