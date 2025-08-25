@@ -1,13 +1,390 @@
-<!doctype html>
+<!-- <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
+    <title>Cosette Portfolio</title>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html> -->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Cosette | Portfolio</title>
+    <link rel="stylesheet" href="/src/styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet">
+
+  </head>
+  <body>
+    <!-- ==================== Header Bar ====================  -->
+    <header class="site-header">
+      <a class="brand" href="#">Cosette Tabucol</a>
+      <nav class="nav">
+        <!-- ==================== GitHub ==================== -->
+        <a href="https://github.com/cosettekay" aria-label="GitHub" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
+            <path d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58l-.02-2.04c-3.34.73-4.04-1.61-4.04-1.61-.55-1.4-1.34-1.77-1.34-1.77-1.09-.75.08-.74.08-.74 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.82 1.3 3.51.99.11-.78.42-1.3.77-1.6-2.67-.3-5.47-1.34-5.47-5.95 0-1.31.47-2.38 1.24-3.22-.12-.31-.54-1.55.12-3.23 0 0 1.01-.32 3.3 1.23a11.48 11.48 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.68.24 2.92.12 3.23.77.84 1.24 1.91 1.24 3.22 0 4.62-2.81 5.64-5.49 5.93.43.37.82 1.1.82 2.22l-.01 3.29c0 .32.21.7.83.58A12 12 0 0 0 12 .5z"/>
+          </svg>
+        </a>
+    
+        <!-- ==================== LinkedIn ==================== -->
+        <a href="https://www.linkedin.com/in/cosette-tabucol/" aria-label="LinkedIn" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
+            <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5.001 2.5 2.5 0 0 1 0-5zM3.5 9h3v12h-3zM10 9h2.9v1.64h.04c.4-.75 1.38-1.54 2.84-1.54 3.04 0 3.6 2 3.6 4.6V21H16v-6.2c0-1.48-.03-3.38-2.06-3.38-2.07 0-2.39 1.62-2.39 3.28V21H10V9z"/>
+          </svg>
+        </a>
+      </nav>
+    </header>
+
+    <!-- ==================== LEFT Greeting | RIGHT Animation ==================== -->
+    <section id="home" class="hero-split section wash">
+      <div class="hero-left">
+        <h1 class="headline">
+          hi, i'm <span class="accent">cosette</span>.<span class="caret">|</span>
+        </h1>
+        <h2 class="subheadline">i code stuff.</h2>
+        <p class="lede">
+          i like to find ways to make life and work simpler through tech.
+        </p>
+        <!-- ==================== Navigation ====================  -->
+        <nav class="hero-index" aria-label="Section index">
+          <ul>
+            <li><a href="#about"><em>01</em><span>// about</span></a></li>
+            <li><a href="#experience"><em>02</em><span>// experience</span></a></li>
+            <li><a href="#expertise"><em>03</em><span>// expertise</span></a></li>
+            <li><a href="#projects"><em>04</em><span>// projects</span></a></li>
+            <!-- <li><a href="#contact"><em>05</em><span>// contact</span></a></li> -->
+          </ul>
+        </nav>
+      </div>
+
+      <div class="hero-right">
+        <div class="flower-wrap">
+          <!-- transparent background so page styling shows through -->
+          <canvas id="flower" width="900" height="900" aria-label="Animated flower"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ==================== ==================== ==================== ====================  -->
+    <!-- ======================================== ABOUT ======================================== -->
+    <!-- ==================== ==================== ==================== ==================== ====================  -->
+
+    <section id="about" class="section wash about">
+      <div class="about__wrap">
+        <div class="about__left">
+          <h2 class="about__title">
+            <!--  ==================== Heading ==================== -->
+            <span class="slash">01</span> about me
+            <i class="about__rule" aria-hidden="true"></i>
+          </h2>
+
+          <!-- ==================== About Me Description ==================== -->
+          <p class="about__p">
+            I am an <strong>aspiring Software Engineer</strong> currently seeking new grad opportunities.
+            I recently earned my <strong>B.S. in Computer Science </strong>from <a class="accent-link" href="#" target="_blank" rel="noopener">Cal Poly Pomona</a>.
+            I enjoy creating software projects ranging from web and mobile apps to AI/ML and automation.
+          </p>
+          <p class="about__p">
+            I apply tech to streamline workflows and bring ideas to life while continually exploring new technologies and ideas.
+          </p>
+
+          <!-- ==================== Current Technologies List ==================== -->
+          <h3 class="about__h3">Technologies I’ve been currently working with:</h3>
+
+          <ul class="about__tech">
+            <li>React.js</li>
+            <li>JavaScript</li>
+            <li>HTML+CSS</li>
+            <li>Python</li>
+            <li>Swift</li>
+            <li>C++/C</li>
+          </ul>
+
+          <!-- ==================== Personal Tidibits ==================== -->
+          <p class="about__p">
+            When I’m not coding, I enjoy baking, watching movies, playing video games and frequent boba runs.
+          </p>
+        </div>
+
+        <!-- ==================== Profile Photo -->
+        <aside class="about__right">
+          <figure class="about__card">
+            <img src="./src/assets/cosette_2.jpeg" alt="Cosette pfp" class="about__img" />
+          </figure>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ==================== ==================== ==================== ==================== ====================  -->
+    <!-- ======================================== EXPERIENCE ======================================== -->
+    <!-- ==================== ==================== ==================== ==================== ====================  -->
+
+    <section id="experience" class="section wash">
+      <div class="experience__container">
+        <h2 class="xp-title">
+          <!-- ==================== Heading Title ====================-->
+          <span class="slash">02</span> Experience
+          <i class="xp-rule" aria-hidden="true"></i>
+        </h2>
+
+        <!-- ==================== Two Columns : Companies + Job Description Details ==================== -->
+        <div class="experience__layout">
+          <!-- Sidebar: Companies -->
+          <ul class="experience__companies" role="tablist" aria-label="Companies">
+            <li class="active" role="tab" aria-selected="true">Grassroots Analytics</li>
+            <!-- ==================== Add more companies later on -->
+            <!-- <li role="tab" aria-selected="false">Company 2</li>
+            <li role="tab" aria-selected="false">Company 3</li> -->
+          </ul>
+    
+          <!-- ==================== Job Description Details ==================== -->
+          <div class="experience__details" role="tabpanel">
+
+            <!-- ==================== Job Title ====================  -->
+            <h3 class="role">
+              Software Engineer Intern <span>@ Grassroots Analytics</span>
+            </h3>
+            <!-- ==================== Job Duration + Location ====================  -->
+            <div class="job-meta">
+              <span class="job-dates">Jun – Aug 2024</span>
+              <span class="job-location">• Washington D.C. (On-Site)</span>
+            </div>
+    
+            <ul class="highlights">
+              <!-- ==================== Job Description (Bullet Points) ===================== -->
+              <li>Developed and enhanced web application features, implemented UI improvements, 
+                and resolved defects using JavaScript, Vue.js, HTML, and CSS
+              </li>
+              <li>Performed manual regression testing 
+                before introducing automated E2E testing with Playwright, 
+                integrating it into the CI/CD pipeline and writing test suites to improve efficiency
+              </li>
+              <li>Worked in an agile environment with sprints and scrums, collaborating across teams to refine solutions</li>
+              <li>Participated in demo meetings and presentations to showcase updates and projects, and gather feedback for future improvements</li>
+              <li>Produced documentation to support onboarding process and sustain automated testing efforts</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+
+    <!-- ==================== ==================== ==================== ==================== ====================  -->
+    <!-- ======================================== EXPERTISE ======================================== -->
+    <!-- ==================== ==================== ==================== ==================== ====================  -->
+
+    <section id="expertise" class="section wash expertise">
+      <div class="xp-wrap">
+        <h2 class="xp-title">
+          <!-- ==================== Header Opening ==================== -->
+          <span class="slash">03</span> Expertise
+
+          <i class="xp-rule" aria-hidden="true"></i>
+        </h2>
+
+        <div class="xp-grid">
+          <!-- ==================== Web Application Development ====================-->
+          <article class="xp-card">
+            <header class="xp-header">
+              <span class="xp-icon" aria-hidden="true">
+                <!-- browser (lucide-style) -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                  <g fill="none">
+                    <path fill="#66e1ff" d="M23 7.217v12.435a1.913 1.913 0 0 1-1.913 1.913H2.913A1.914 1.914 0 0 1 1 19.652V7.217z" />
+                    <path fill="#c2f3ff" d="M5.304 21.565L19.652 7.217H1v12.435a1.913 1.913 0 0 0 1.913 1.913z" />
+                    <path fill="#fff" d="M23 7.217H1v-2.87a1.913 1.913 0 0 1 1.913-1.912h18.174A1.913 1.913 0 0 1 23 4.348z" />
+                    <path stroke="#191919" stroke-linecap="round" stroke-linejoin="round" d="M21.087 2.435H2.913A1.913 1.913 0 0 0 1 4.348v15.304a1.913 1.913 0 0 0 1.913 1.913h18.174A1.913 1.913 0 0 0 23 19.652V4.348a1.913 1.913 0 0 0-1.913-1.913M1 7.217h22" stroke-width="1" />
+                    <path stroke="#191919" d="M4.348 5.065a.24.24 0 0 1 0-.478m0 .478a.24.24 0 0 0 0-.478" stroke-width="1" />
+                    <path fill="#fff9bf" d="M10.087 11.044h-5.74a.48.48 0 0 0-.477.478v5.739a.48.48 0 0 0 .478.478h5.739a.48.48 0 0 0 .478-.478v-5.74a.48.48 0 0 0-.478-.478" />
+                    <path fill="#ffbfc5" d="m3.995 17.584l3.3-4.066a.478.478 0 0 1 .782.055l2.382 3.988" />
+                    <path stroke="#191919" stroke-linecap="round" stroke-linejoin="round" d="m3.995 17.584l3.3-4.066a.478.478 0 0 1 .782.055l2.382 3.988" stroke-width="1" />
+                    <path fill="#ffef5e" d="M19.652 11.044h-5.74a.48.48 0 0 0-.477.478v5.739a.48.48 0 0 0 .478.478h5.739a.48.48 0 0 0 .478-.478v-5.74a.48.48 0 0 0-.478-.478" />
+                    <path fill="#ff808c" d="m13.56 17.584l3.3-4.066a.477.477 0 0 1 .782.055l2.382 3.988" />
+                    <path stroke="#191919" stroke-linecap="round" stroke-linejoin="round" d="m13.56 17.584l3.3-4.066a.477.477 0 0 1 .782.055l2.382 3.988" stroke-width="1" />
+                    <path stroke="#191919" stroke-linecap="round" stroke-linejoin="round" d="M19.652 11.044h-5.74a.48.48 0 0 0-.477.478v5.739a.48.48 0 0 0 .478.478h5.739a.48.48 0 0 0 .478-.478v-5.74a.48.48 0 0 0-.478-.478m-9.565.001h-5.74a.48.48 0 0 0-.477.478v5.739a.48.48 0 0 0 .478.478h5.739a.48.48 0 0 0 .478-.478v-5.74a.48.48 0 0 0-.478-.478" stroke-width="1" />
+                    <path stroke="#191919" d="M7.217 5.065a.24.24 0 0 1 0-.478m0 .478a.24.24 0 0 0 0-.478m2.87.478a.24.24 0 0 1 0-.478" stroke-width="1" />
+                    <path stroke="#191919" d="M10.086 5.065a.24.24 0 1 0 0-.478" stroke-width="1" />
+                  </g>
+                </svg>
+              </span>
+              <h3 class="xp-heading"><span class="hl">Web Application</span> Development</h3>
+            </header>
+            <p>Professional experience with JavaScript/Vue. Personal projects built with React + TypeScript</p>
+            <ul class="xp-tags">
+              <li>JavaScript</li><li>React</li><li>Vue</li><li>TypeScript</li><li>HTML</li><li>CSS</li>
+            </ul>
+          </article>
+    
+          <!-- ==================== Mobile Application Development ====================-->
+          <article class="xp-card">
+            <header class="xp-header">
+              <span class="xp-icon" aria-hidden="true">
+                <!-- smartphone -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+                  <g fill="none">
+                    <path fill="#7167a4" d="M9 2a3 3 0 0 0-3 3v2h19V5a3 3 0 0 0-3-3zm0 28a3 3 0 0 1-3-3v-2h19v2a3 3 0 0 1-3 3z" />
+                    <path fill="#321b41" d="M6 6h19v20H6z" />
+                    <path fill="#00a6ed" d="M13.5 10a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zm-5 5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zm6 4a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1z" />
+                    <path fill="#ff822d" d="M8.5 10a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zm0 10a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zm11-6a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1z" />
+                    <path fill="#fcd53f" d="M18.5 10a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zm-5 5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zm6 4a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1z" />
+                  </g>
+                </svg>
+              </span>
+              <h3 class="xp-heading"><span class="hl">Mobile Application</span> Development</h3>
+            </header>
+            <p>Experience developing Android and iOS apps, from productivity tools to games.</p>
+            <ul class="xp-tags">
+              <li>Swift</li><li>Dart</li><li>iOS</li><li>Android</li><li>AndroidStudio</li><li>Flutter</li><li>Xcode</li>
+            </ul>
+          </article>
+    
+          <!-- ==================== Automation & Manual Testing ====================-->
+          <article class="xp-card">
+            <header class="xp-header">
+              <span class="xp-icon" aria-hidden="true">
+                <!-- cog -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                  <defs>
+                    <symbol id="SVGf9bFLczd">
+                      <path d="M15.24 6.37C15.65 6.6 16.04 6.88 16.38 7.2C16.6 7.4 16.8 7.61 16.99 7.83C17.46 8.4 17.85 9.05 18.11 9.77C18.2 10.03 18.28 10.31 18.35 10.59C18.45 11.04 18.5 11.52 18.5 12">
+                        <animate fill="freeze" attributeName="d" begin="0.9s" dur="0.2s" values="M15.24 6.37C15.65 6.6 16.04 6.88 16.38 7.2C16.6 7.4 16.8 7.61 16.99 7.83C17.46 8.4 17.85 9.05 18.11 9.77C18.2 10.03 18.28 10.31 18.35 10.59C18.45 11.04 18.5 11.52 18.5 12;M15.24 6.37C15.65 6.6 16.04 6.88 16.38 7.2C16.38 7.2 19 6.12 19.01 6.14C19.01 6.14 20.57 8.84 20.57 8.84C20.58 8.87 18.35 10.59 18.35 10.59C18.45 11.04 18.5 11.52 18.5 12" />
+                      </path>
+                    </symbol>
+                  </defs>
+                  <g fill="none" stroke="#39dddc" stroke-width="2">
+                    <g stroke-linecap="round">
+                      <path stroke-dasharray="20" stroke-dashoffset="20" d="M12 9c1.66 0 3 1.34 3 3c0 1.66 -1.34 3 -3 3c-1.66 0 -3 -1.34 -3 -3c0 -1.66 1.34 -3 3 -3Z">
+                        <animate fill="freeze" attributeName="stroke-dashoffset" dur="0.2s" values="20;0" />
+                      </path>
+                      <path stroke-dasharray="48" stroke-dashoffset="48" d="M12 5.5c3.59 0 6.5 2.91 6.5 6.5c0 3.59 -2.91 6.5 -6.5 6.5c-3.59 0 -6.5 -2.91 -6.5 -6.5c0 -3.59 2.91 -6.5 6.5 -6.5Z">
+                        <animate fill="freeze" attributeName="stroke-dashoffset" begin="0.2s" dur="0.6s" values="48;0" />
+                        <set fill="freeze" attributeName="opacity" begin="0.9s" to="0" />
+                      </path>
+                    </g>
+                    <g opacity="0">
+                      <use href="#SVGf9bFLczd" />
+                      <use href="#SVGf9bFLczd" transform="rotate(60 12 12)" />
+                      <use href="#SVGf9bFLczd" transform="rotate(120 12 12)" />
+                      <use href="#SVGf9bFLczd" transform="rotate(180 12 12)" />
+                      <use href="#SVGf9bFLczd" transform="rotate(240 12 12)" />
+                      <use href="#SVGf9bFLczd" transform="rotate(300 12 12)" />
+                      <set fill="freeze" attributeName="opacity" begin="0.9s" to="1" />
+                      <animateTransform attributeName="transform" dur="30s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12" />
+                    </g>
+                  </g>
+                </svg>
+              </span>
+              <h3 class="xp-heading"><span class="hl">Automation</span> & Manual Testing</h3>
+            </header>
+            <p>Professional experience in Playwright and regression testing. Extend both automation+manual into personal projects.</p>
+            <ul class="xp-tags">
+              <li>Playwright</li><li>GitHub Actions</li><li>JavaScript</li><li>Python</li><li>Automation Testing</li><li>Manual Regression Testing</li>
+            </ul>
+          </article>
+    
+          <!-- ==================== AI/ML ====================-->
+          <article class="xp-card">
+            <header class="xp-header">
+              <span class="xp-icon" aria-hidden="true">
+                <!-- brain/circuit -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                  <path fill="#c370ff" d="M21 11V9h-2V7a2.006 2.006 0 0 0-2-2h-2V3h-2v2h-2V3H9v2H7a2.006 2.006 0 0 0-2 2v2H3v2h2v2H3v2h2v2a2.006 2.006 0 0 0 2 2h2v2h2v-2h2v2h2v-2h2a2.006 2.006 0 0 0 2-2v-2h2v-2h-2v-2Zm-4 6H7V7h10Z" />
+                  <path fill="#f9edff" d="M11.361 8h-1.345l-2.01 8h1.027l.464-1.875h2.316L12.265 16h1.062Zm-1.729 5.324L10.65 8.95h.046l.983 4.374ZM14.244 8h1v8h-1z" />
+                </svg>
+              </span>
+              <h3 class="xp-heading"><span class="hl">AI/ML</span></h3>
+            </header>
+            <p>Built personal projects with AI models, from chatbots to creative apps, exploring prompt design and fine-tuning.</p>
+            <ul class="xp-tags">
+              <li>Python</li>
+              <li>GPT-2</li>
+              <li>GPT-4</li>
+              <li>Gemini</li>
+              <li>Docker</li>
+              <li>Machine Learning</li>
+              <li>Prompt Engineering</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+    
+
+    <section id="projects" class="section wash">
+      <!-- PROJECTS -->
+<section id="projects" class="section wash projects">
+  <div class="projects__wrap">
+    <h2 class="xp-title">
+      <span class="slash">04</span> Projects
+      <i class="xp-rule" aria-hidden="true"></i>
+    </h2>
+
+    <!-- Filter bar -->
+    <nav class="proj-filter" aria-label="Filter projects">
+      <button class="pf-btn active" data-filter="all">
+        All <sup class="count">0</sup>
+      </button>
+      <span class="pf-sep">/</span>
+      <button class="pf-btn" data-filter="data-viz">
+        Mobile App Development <sup class="count">0</sup>
+      </button>
+      <span class="pf-sep">/</span>
+      <button class="pf-btn" data-filter="web-dev">
+        Web Development <sup class="count">0</sup>
+      </button>
+    </nav>
+
+    <!-- Grid -->
+    <div class="proj-grid">
+      <!-- Example card -->
+      <article class="proj-card" data-cat="web-dev">
+        <a class="thumb" href="https://example.com" target="_blank" rel="noopener">
+          <img src="./src/assets/coming_soon.jpg" alt="Flight Local site" />
+        </a>
+        <div class="meta">
+          <h3 class="title">TBD</h3>
+          <p class="cat">Web Development</p>
+        </div>
+      </article>
+
+      <article class="proj-card" data-cat="data-viz">
+        <a class="thumb" href="#" aria-label="Open project">
+          <img src="./src/assets/coming_soon.jpg" alt="AI Lab Granada dashboard" />
+        </a>
+        <div class="meta">
+          <h3 class="title">TBD</h3>
+          <p class="cat">AI/ML</p>
+        </div>
+      </article>
+
+      <article class="proj-card" data-cat="web-dev">
+        <a class="thumb" href="#">
+          <img src="./src/assets/coming_soon.jpg" alt="Khora landing page" />
+        </a>
+        <div class="meta">
+          <h3 class="title">TBD</h3>
+          <p class="cat">Mobile Development</p>
+        </div>
+      </article>
+
+      <!-- add more: duplicate & change data-cat, img, title, cat -->
+    </div>
+  </div>
+</section>
+
+    </section>
+    <section id="contact" class="section wash">
+      
+    </section>
+
+    <script type="module" src="/src/main.js"></script>
   </body>
 </html>
