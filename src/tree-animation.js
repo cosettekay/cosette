@@ -263,12 +263,22 @@ class TreeAnimation {
     // Add current season class
     this.backgroundRef.classList.add(`season--${currentSeason}`);
 
+    // Dispatch custom event for season change
+    const seasonChangeEvent = new CustomEvent('seasonChange', {
+      detail: { season: currentSeason }
+    });
+    window.dispatchEvent(seasonChangeEvent);
+
     // Handle fall particles
     if (currentSeason === 'fall') {
       this.startFallParticles();
     } else {
       this.stopFallParticles();
     }
+  }
+
+  getCurrentSeason() {
+    return this.isDormant ? 'dormant' : SEASONS[this.seasonIndex];
   }
 
   startFallParticles() {

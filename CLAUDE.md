@@ -37,8 +37,9 @@ npm run lint
 ### Project Structure
 
 - `index.html` - Main HTML file containing all portfolio content (single-page layout)
-- `src/main.js` - Entry point that imports styles and tree animation
+- `src/main.js` - Entry point that imports styles, tree animation, and typing animation
 - `src/styles.css` - All styling for the portfolio
+- `src/typing-animation.js` - Vanilla JavaScript for typing animation with season-synced colors
 - `src/tree-animation.js` - Vanilla JavaScript for animated seasonal tree
 - `src/tree-animation.css` - Styling for tree animation and seasonal effects
 - `src/tree-geometry.css` - Tree branch and leaf positioning
@@ -50,7 +51,7 @@ npm run lint
 The portfolio is built as a **single-page application** with all content in `index.html`:
 
 1. **Header** - Navigation bar with name and social links (GitHub, LinkedIn)
-2. **Hero Section** (`#home`) - Centered layout with greeting text and animated seasonal tree that cycles through spring, summer, fall, and winter
+2. **Hero Section** (`#home`) - Centered layout with typing animation headline and animated seasonal tree (both sync colors by season)
 3. **About Section** (`#about`) - Personal bio, tech stack, and profile photo
 4. **Experience Section** (`#experience`) - Job history with tabbed interface (currently Grassroots Analytics)
 5. **Expertise Section** (`#expertise`) - Grid of skill cards (Web Dev, Mobile Dev, Automation/Testing, AI/ML)
@@ -78,6 +79,29 @@ The hero section includes an animated seasonal tree that cycles through all four
 - Uses CSS custom properties for smooth color transitions
 - Particle effects for fall leaves and winter snow
 - Fully responsive with the hero section layout
+
+### Typing Animation Feature
+
+The hero section headline ("hi, i'm cosette.") features a typing animation that simulates real-time typing:
+
+**Files:**
+- `src/typing-animation.js` - Typing animation logic with season-synced colors
+
+**Behavior:**
+- Types and deletes the headline text in a continuous loop
+- Types at 120ms per character, deletes at 60ms per character
+- Blinking cursor follows the typing
+- Name gradient colors dynamically sync with tree seasons
+
+**Season Color Integration:**
+- Listens to `seasonChange` events from the tree animation
+- Updates text gradient colors to match current season:
+  - Spring: Fresh greens
+  - Summer: Deep vibrant greens
+  - Fall: Warm oranges
+  - Winter: Cool blues
+- Smooth 1.5s color transitions between seasons
+- Uses CSS custom properties (`--accent-season1`, `--accent-season2`)
 
 ### Styling Approach
 

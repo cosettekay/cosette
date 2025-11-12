@@ -9,9 +9,13 @@
     --accent3:#8045d4; /* bright purple  */
     --accent4: #3c68ee; /* bright blue */
     --header-h:64px;
-  
+
     --g1y:22%;
     --g2y:78%;
+
+    /* Season-synced colors (updated dynamically by typing animation) */
+    --accent-season1: #7c3aed; /* Default: purple */
+    --accent-season2: #38bdf8; /* Default: blue */
   }
   
   /* ========== Base ========== */
@@ -190,12 +194,13 @@ html { scroll-behavior: smooth; }
     color:#e2e8f0;
   }
   .accent{
-    color:var(--accent1); /* Fallback for browsers without background-clip support */
-    background:linear-gradient(90deg,var(--accent1),var(--accent2));
+    color:var(--accent-season1); /* Fallback for browsers without background-clip support */
+    background:linear-gradient(90deg,var(--accent-season1),var(--accent-season2));
     -webkit-background-clip:text;
     background-clip:text;
     -webkit-text-fill-color:transparent;
     font-weight:800;
+    transition: background 1.5s ease, color 1.5s ease; /* Smooth color transitions between seasons */
   }
   .caret{
     font-family:"Roboto Mono",monospace; 
