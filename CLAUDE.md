@@ -37,9 +37,11 @@ npm run lint
 ### Project Structure
 
 - `index.html` - Main HTML file containing all portfolio content (single-page layout)
-- `src/main.js` - Entry point that imports styles
+- `src/main.js` - Entry point that imports styles and tree animation
 - `src/styles.css` - All styling for the portfolio
-- `src/animated-flower.js` - Commented out code for canvas-based flower animation (currently unused)
+- `src/tree-animation.js` - Vanilla JavaScript for animated seasonal tree
+- `src/tree-animation.css` - Styling for tree animation and seasonal effects
+- `src/tree-geometry.css` - Tree branch and leaf positioning
 - `public/` - Static assets including profile images
 - `dist/` - Build output directory (ignored in git)
 
@@ -48,18 +50,43 @@ npm run lint
 The portfolio is built as a **single-page application** with all content in `index.html`:
 
 1. **Header** - Navigation bar with name and social links (GitHub, LinkedIn)
-2. **Hero Section** (`#home`) - Split layout with greeting text on left and animated canvas on right
+2. **Hero Section** (`#home`) - Centered layout with greeting text and animated seasonal tree that cycles through spring, summer, fall, and winter
 3. **About Section** (`#about`) - Personal bio, tech stack, and profile photo
 4. **Experience Section** (`#experience`) - Job history with tabbed interface (currently Grassroots Analytics)
 5. **Expertise Section** (`#expertise`) - Grid of skill cards (Web Dev, Mobile Dev, Automation/Testing, AI/ML)
 6. **Projects Section** (`#projects`) - Filterable project grid with placeholder "coming soon" items
 
+### Tree Animation Feature
+
+The hero section includes an animated seasonal tree that cycles through all four seasons:
+
+**Files:**
+- `src/tree-animation.js` - Main animation logic (vanilla JavaScript)
+- `src/tree-animation.css` - Animation styles and seasonal transitions
+- `src/tree-geometry.css` - Branch and leaf positioning
+
+**Behavior:**
+- Cycles through Spring → Summer → Fall → Winter every 15 seconds per season
+- Spring: Fresh green leaves with colorful flowers
+- Summer: Fuller foliage with extra leaves
+- Fall: Warm orange/red colors with dynamically falling leaf particles
+- Winter: Bare branches with snowfall particles
+- 1.5 second dormant transition between full cycles
+
+**Implementation:**
+- Pure vanilla JavaScript class-based implementation
+- Uses CSS custom properties for smooth color transitions
+- Particle effects for fall leaves and winter snow
+- Fully responsive with the hero section layout
+
 ### Styling Approach
 
 - Pure CSS (no preprocessor or CSS-in-JS)
-- Custom properties likely used for theming (based on class names like `.accent`, `.wash`)
-- Responsive design patterns evident from hero split layout
-- All styles centralized in `src/styles.css`
+- CSS custom properties (@property) used for animatable color transitions in tree animation
+- Custom properties for theming (`.accent`, `.wash` classes)
+- Flexbox-based centered hero layout
+- Responsive design with mobile-first breakpoints
+- All styles centralized in `src/styles.css` with separate tree animation styles
 
 ### Linting
 

@@ -1,0 +1,498 @@
+@import url("./tree-geometry.css");
+
+/* ================= Animatable custom props ================= */
+@property --leaf-color { syntax: '<color>'; inherits: true; initial-value: #7fd58a; }
+@property --flower-hue { syntax: '<angle>'; inherits: true; initial-value: 0deg; }
+@property --flower-sat { syntax: '<number>'; inherits: true; initial-value: 1; }
+@property --flower-bright { syntax: '<number>'; inherits: true; initial-value: 1; }
+@property --flower-sepia { syntax: '<number>'; inherits: true; initial-value: 0; }
+@property --flower-contrast { syntax: '<number>'; inherits: true; initial-value: 1; }
+
+/* ================= Keyframes ================= */
+@keyframes leaf-fall {
+  0% { transform: translate3d(0, -16px, 0); opacity: 0; }
+  40% { transform: translate3d(0, 160px, 0); opacity: 0.85; }
+  70% { transform: translate3d(0, 280px, 0); opacity: 0.7; }
+  100% { transform: translate3d(0, 360px, 0); opacity: 0; }
+}
+@keyframes branch-leaf-drop {
+  0% { margin-top: 0; opacity: 0; }
+  35% { margin-top: 120px; opacity: 0.9; }
+  70% { margin-top: 240px; opacity: 0.6; }
+  100% { margin-top: 320px; opacity: 0; }
+}
+
+/* ===================== FALL: vertical falling leaves ===================== */
+/* ===================== FALL: vertical falling leaves ===================== */
+
+@keyframes fall-vertical {
+  0%   { transform: translate(-50%, -10px); opacity: 0; }
+  6%   { transform: translate(-50%, 0);     opacity: 1; }
+  100% { transform: translate(-50%, 380px); opacity: 0; } /* tune distance */
+}
+
+.season-fall {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;         /* keeps particles inside the pane */
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 400ms ease;
+}
+
+/* only visible in fall */
+.season--fall .season-fall { opacity: 1; }
+
+/* A single generic particle, positioned with CSS variables */
+.season-fall__leaf {
+  position: absolute;
+  left: var(--x, 0px);
+  top:  var(--y, 0px);
+  width: var(--size, 14px);
+  height: var(--size, 20px);
+  border-radius: 0 100%;
+  background: linear-gradient(135deg, #b07c32 0%, #ff9837 55%, #f18242 100%);
+  box-shadow: 0 0.5px 0 rgba(0,0,0,0.15) inset;
+  opacity: 0;
+  transform: translate(-50%, 0);
+  animation: fall-vertical var(--dur, 6.5s) linear var(--delay, 0s) forwards;
+}
+
+/* keep your radial mask so particles are clipped to the round halo */
+.season-fall{
+  -webkit-mask-image: radial-gradient(circle at 50% 42%, #000 0%, #000 50%, transparent 66%);
+          mask-image: radial-gradient(circle at 50% 42%, #000 0%, #000 50%, transparent 66%);
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+          mask-size: 100% 100%;
+}
+
+/* flip factor + (optional) little tilt per leaf */
+.season-fall__leaf{
+  --flipX: 1;            /* 1 = normal, -1 = mirrored across Y axis */
+  --tilt: 0deg;          /* optional gentle tilt */
+}
+
+/* keyframes now keep the flip constant while moving down */
+@keyframes fall-vertical {
+  0%   { transform: scaleX(var(--flipX)) rotate(var(--tilt)) translateY(-30px); opacity: 0; }
+  8%   { opacity: 0.9; }
+  90%  { opacity: 0.85; }
+  100% { transform: scaleX(var(--flipX)) rotate(var(--tilt)) translateY(420px); opacity: 0; }
+}
+
+/* If you want a quick CSS-only pattern: mirror some by nth-child */
+.season-fall__leaf:nth-child(2n) { --flipX: -1; }          /* every other leaf */
+.season-fall__leaf:nth-child(3n) { --tilt: -8deg; }        /* optional variety */
+.season-fall__leaf:nth-child(4n) { --tilt:  10deg; }
+
+/* ===================== WINTER: snowfall + gentle fade ===================== */
+
+@keyframes snow-vertical {
+  0%   { transform: translateY(-24px); opacity: 0; }
+  10%  { opacity: 0.9; }
+  100% { transform: translateY(440px); opacity: 0; }
+}
+
+.season-snow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 400ms ease;
+}
+
+.season--winter .season-snow { opacity: 1; }
+
+.season-snow__flake {
+  position: absolute;
+  top: -24px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.7) 60%, rgba(255,255,255,0) 100%);
+  filter: blur(0.3px);
+  opacity: 0;
+  animation-name: snow-vertical;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+/* spread flakes across the arc */
+.season-snow__flake--1  { left: 6%;  animation-duration: 8.2s; animation-delay: 0.2s; }
+.season-snow__flake--2  { left: 10%; animation-duration: 9.1s; animation-delay: 0.9s; }
+.season-snow__flake--3  { left: 15%; animation-duration: 7.8s; animation-delay: 0.4s; }
+.season-snow__flake--4  { left: 20%; animation-duration: 9.4s; animation-delay: 1.2s; }
+.season-snow__flake--5  { left: 25%; animation-duration: 8.5s; animation-delay: 0.1s; }
+.season-snow__flake--6  { left: 30%; animation-duration: 9.6s; animation-delay: 0.7s; }
+.season-snow__flake--7  { left: 36%; animation-duration: 8.0s; animation-delay: 1.1s; }
+.season-snow__flake--8  { left: 43%; animation-duration: 9.2s; animation-delay: 0.5s; }
+.season-snow__flake--9  { left: 50%; animation-duration: 8.6s; animation-delay: 1.5s; }
+.season-snow__flake--10 { left: 58%; animation-duration: 9.8s; animation-delay: 0.6s; }
+.season-snow__flake--11 { left: 65%; animation-duration: 8.3s; animation-delay: 1.0s; }
+.season-snow__flake--12 { left: 70%; animation-duration: 9.0s; animation-delay: 0.3s; }
+.season-snow__flake--13 { left: 75%; animation-duration: 8.1s; animation-delay: 1.3s; }
+.season-snow__flake--14 { left: 80%; animation-duration: 9.7s; animation-delay: 0.8s; }
+.season-snow__flake--15 { left: 86%; animation-duration: 8.4s; animation-delay: 1.7s; }
+.season-snow__flake--16 { left: 90%; animation-duration: 9.3s; animation-delay: 0.2s; }
+.season-snow__flake--17 { left: 54%; animation-duration: 8.9s; animation-delay: 1.9s; }
+.season-snow__flake--18 { left: 32%; animation-duration: 9.5s; animation-delay: 1.4s; }
+.season-snow__flake--19 { left: 68%; animation-duration: 8.7s; animation-delay: 0.1s; }
+.season-snow__flake--20 { left: 22%; animation-duration: 9.9s; animation-delay: 0.6s; }
+
+/* Winter appearance: pale then fade out smoothly (leaves & flowers) */
+.season--winter .leaf {
+  /* go pale before opacity 0 (you already set opacity to 0 via variables) */
+  --leaf-color: #e7f2e9;
+  transition: --leaf-color 900ms ease, opacity 1200ms ease;
+}
+
+.season--winter .flower,
+.season--winter .heart,
+.season--winter .tulip {
+  /* keep your warm filter but fade out gently */
+  transition: filter 900ms ease, opacity 1200ms ease;
+}
+
+
+/* ================= Frame & Background ================= */
+.season-frame { position: relative; width: 28rem; height: 28rem; }
+.season-frame__halo, .season-frame__ground { position: absolute; inset: 0; pointer-events: none; }
+
+/* .season-frame__halo {
+  border-radius: 46%;
+  opacity: 0.6;
+  background: radial-gradient(
+    circle at 40% 40%,
+    rgba(255, 180, 96, 0.35) 0%,
+    rgba(255, 116, 38, 0.18) 42%,
+    rgba(8, 12, 18, 0) 78%
+  );
+} */
+
+.season-frame__ground {
+  top: auto; left: 16%; right: 16%; bottom: 0.75rem; height: 0.45rem;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(255,116,38,0) 0%, rgba(255,116,38,0.35) 45%, rgba(255,116,38,0) 100%);
+  filter: blur(2px);
+}
+
+.season-background {
+  position: absolute; inset: 0; display: flex; align-items: flex-end; justify-content: center; pointer-events: none;
+}
+
+.background {
+  width: 350px; height: 445px; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+  --season-scale: 0; --leaf-opacity: 0; --flower-opacity: 0; --leaf-color: #ccefd2;
+
+}
+
+/* ================= Seasons (variables drive look) ================= */
+/* SPRING */
+.season--spring {
+  --season-scale: 1; --leaf-opacity: 0.85; --flower-opacity: 0.65;
+  --leaf-color: #bff0c5;
+  --flower-hue: 0deg; --flower-sat: 1; --flower-bright: 1; --flower-sepia: 0; --flower-contrast: 1;
+  --slope-color: #8fe89a;
+  --slope-spot: #f6efc8;
+}
+
+/* SUMMER (fuller canopy) */
+.season--summer {
+  --season-scale: 1; --leaf-opacity: 1; --flower-opacity: 1;
+  --leaf-color: #7fd58a;
+  --flower-hue: 0deg; --flower-sat: 1; --flower-bright: 1; --flower-sepia: 0; --flower-contrast: 1;
+  --extra-leaf-scale: 1;
+  --slope-color: #49ad55;
+  --slope-spot: #f0e1a1;
+}
+
+/* FALL (morph to warm hues) */
+.season--fall {
+  --season-scale: 1; 
+  --leaf-opacity: 0.95; 
+  --flower-opacity: 0.9;
+  --leaf-color: #f1a24c;
+  --flower-hue: -15deg; 
+  --flower-sat: 1.35; 
+  --flower-bright: 0.98; 
+  --flower-sepia: 0.9; 
+  --flower-contrast: 1.05;
+  --slope-color: #e19959;
+  --slope-spot: #ebcc94;
+  /* --slope-opacity: 08; */
+}
+
+/* WINTER keeps same warm tint while fading out (no snap-back) */
+.season--winter {
+  --season-scale: 1; --leaf-opacity: 0; --flower-opacity: 0;
+  --leaf-color: #ccefd2; /* unused */
+  --flower-hue: -15deg; --flower-sat: 1.35; --flower-bright: 0.98; --flower-sepia: 0.9; --flower-contrast: 1.05;
+  --slope-color: #eff5faf6;
+  --slope-spot: #b9b9b9e1;
+}
+
+/* DORMANT */
+.season--dormant { --season-scale: 0; --leaf-opacity: 0; --flower-opacity: 0; }
+
+/* ================= Ground shape ================= */
+.slope {
+  background: var(--slope-color);
+  width: 100%; 
+  height: 100px;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0; 
+  overflow: hidden; 
+  position: absolute; 
+  bottom: 0;
+  transition: background-color 2.2s ease-in-out, background 2.2s ease-in-out;
+}
+.slope::before {
+  content: ""; 
+  background: var(--slope-spot); 
+  border-radius: 50%; 
+  width: 80px; 
+  height: 30px;
+  position: absolute; 
+  left: 50%; 
+  margin-left: -40px; 
+  top: -5px;
+  transition: background-color 2.2s ease-in-out, background 2.2s ease-in-out;
+}
+
+/* ================= Tree trunk ================= */
+.tree {
+  width: 2px;
+  border-right: 8px solid transparent;
+  border-left: 8px solid transparent;
+  border-bottom: 300px solid #816954;
+  position: absolute; left: 50%; transform-origin: 50% 300px; top: 50px; margin-left: -8px;
+  transform: scale(var(--season-scale));
+  transition: transform 1.2s ease;
+}
+
+/* ================= Branches (seam-free stroke + fixed sockets, no rotation) ================= */
+.branch {
+  /* nudge defaults */
+  --joint-nudge-x: 0px;
+  --joint-nudge-y: 0px;
+
+  position: absolute;
+  width: 150px;
+  height: 40px;
+  border: 0;
+  background: transparent;
+  box-shadow: inset 0 -5px #816954;   /* draws the branch stroke */
+  /* No rotation animation, no transform animation at all for branches */
+  transition: none;
+  backface-visibility: hidden;
+  overflow: visible;
+
+  /* Only scale with season, then apply socket nudge (no rotate) */
+  transform:
+    scale(var(--season-scale))
+    translateX(var(--joint-nudge-x))
+    translateY(var(--joint-nudge-y));
+}
+
+/* no pseudo-elements */
+.branch::before,
+.branch::after { content: none; }
+
+/* side pivots + rounded bottoms (keep geometry looking right) */
+.branch.left,
+.branch.left::before,
+.branch.left::after { transform-origin: 0 0; }
+.branch.right,
+.branch.right::before,
+.branch.right::after { transform-origin: 100% 0; }
+
+.branch.left  { border-bottom-left-radius: 100% 100%;  transform-origin: 100% 100%; }
+.branch.right { border-bottom-right-radius: 100% 100%; transform-origin: 0 100%; margin-left: 1px; }
+
+/* Top-level branches: NO rotate — only scale + nudge */
+.tree > .branch.left {
+  transform:
+    scale(var(--season-scale))
+    translateX(var(--joint-nudge-x))
+    translateY(var(--joint-nudge-y));
+}
+.tree > .branch.right {
+  transform:
+    scale(var(--season-scale))
+    translateX(var(--joint-nudge-x))
+    translateY(var(--joint-nudge-y));
+}
+
+/* generic defaults */
+.branch > .branch { --joint-nudge-y: 2px; }
+.branch.left  > .branch { --joint-nudge-x: -6px; }
+.branch.right > .branch { --joint-nudge-x:  6px; }
+
+/* targeted fixes — keep theseL AST */
+.branch.branch2 > .branch-inner1 { --joint-nudge-x: -19px; --joint-nudge-y: -10px; }
+.branch.branch2 > .branch-inner2 { --joint-nudge-x:  -20px; --joint-nudge-y: 2px; }
+.branch.branch2 > .branch-inner3 { --joint-nudge-x:  -20px; --joint-nudge-y: 2px; }
+.branch.branch2 > .branch-inner3 > .branch-inner4 { --joint-nudge-x: 1px; --joint-nudge-y: 1px; }
+
+.branch.branch3 > .branch.branch-inner1 { --joint-nudge-x: 12px; --joint-nudge-y: 50px; }
+.branch.branch3 > .branch.branch-inner2 { --joint-nudge-x: 48px; --joint-nudge-y: 6px; }
+
+.branch.branch5 > .branch.branch-inner1 { --joint-nudge-x: 14px; --joint-nudge-y: 50px; }
+.branch.branch5 > .branch.branch-inner2 { --joint-nudge-x: -1px; --joint-nudge-y: 0px; }
+
+
+/* ================= Leaves ================= */
+.leaf {
+  --extra-leaf-scale: 0;
+  position: absolute; width: 23px; height: 23px;
+  background: var(--leaf-color);
+  border-radius: 0 100%; z-index: 1; transform-origin: 0 0;
+  opacity: var(--leaf-opacity);
+  transition: --leaf-color 2.2s ease-in-out, opacity 0.9s ease var(--pop-delay, 0s);
+}
+
+/* summer fullness: two extra “ghost” leaves */
+.leaf::before, .leaf::after {
+  content: ""; position: absolute; width: 100%; height: 100%; border-radius: inherit;
+  background: var(--leaf-color); opacity: calc(var(--leaf-opacity) * 0.9);
+  transform-origin: 0 0; transition: transform 800ms ease var(--pop-delay, 0s), opacity 800ms ease var(--pop-delay, 0s);
+}
+.leaf::before { transform: translate(8px, -6px) rotate(18deg) scale(var(--extra-leaf-scale)); }
+.leaf::after  { transform: translate(-7px, 8px) rotate(-22deg) scale(var(--extra-leaf-scale)); }
+
+/* trunk leaves tweaks */
+.tree > .leaf1 { width: 15px; height: 15px; transform: rotate(-150deg); }
+.tree > .leaf2 { width: 15px; height: 15px; transform: rotate(-100deg); }
+
+/* ================= Flowers (variable-driven warm tint) ================= */
+.flower, .heart, .tulip {
+  position: absolute; width: 50px; height: 50px; z-index: 2;
+  opacity: var(--flower-opacity);
+  transition: filter 2.2s ease-in-out, opacity 0.9s ease var(--pop-delay, 0s);
+  filter:
+    sepia(var(--flower-sepia))
+    saturate(var(--flower-sat))
+    hue-rotate(var(--flower-hue))
+    brightness(var(--flower-bright))
+    contrast(var(--flower-contrast));
+}
+
+.flower::after {
+  content: ""; position: absolute; inset: 0; background: #e55; border-radius: 50%;
+  width: 30%; height: 30%; margin: auto;
+}
+
+/* petal shapes/colors */
+.flower .petal { width: 100%; height: 100%; position: absolute; transform: rotate(72deg); }
+.flower .petal::before, .flower .petal::after {
+  content: ""; position: absolute; width: 60%; height: 60%; background: #f0a5a6;
+  border-radius: 0 100px; top: 50%; left: 50%; margin-left: -20%; margin-top: -20%;
+  transform-origin: 33% 33%;
+}
+.flower .petal::after { transform: rotate(36deg); }
+
+.flower.petal5 .petal { transform: rotate(144deg); }
+.flower.petal5 .petal::after { transform: rotate(-72deg); }
+.flower.petal5 > .petal::after { content: none; }
+
+.flower.roundpetal .petal::before, .flower.roundpetal .petal::after {
+  width: 30%; border-radius: 0; margin-left: -15%; margin-top: 0; top: 0; height: 50%;
+  border-radius: 50% 50% 0 0; transform-origin: 50% 100%;
+}
+
+.heart::before, .heart::after {
+  position: absolute; content: ""; width: 80%; height: 80%;
+  border-radius: 100% 0%; background: #f0a5a6; left: 50%; top: 20%; transform-origin: 0% 100%;
+}
+.heart::before { transform: rotate(-65deg); }
+.heart::after  { transform: rotate(-25deg); }
+
+.tulip::before, .tulip::after, .tulip .peak {
+  position: absolute; content: ""; width: 80%; height: 80%;
+  border-radius: 100% 0%; background: #f0a5a6; left: 50%; top: 20%; transform-origin: 0% 100%;
+}
+.tulip::before { transform: rotate(-70deg); }
+.tulip::after  { transform: rotate(-20deg); }
+.tulip .peak   { transform: rotate(-45deg); }
+
+/* variant palettes (base colors; warm tint is added via filters above) */
+.redflower::before, .redflower::after, .redflower .peak, .redflower .petal::before, .redflower .petal::after { background: #f0a5a6; }
+.greenflower::before, .greenflower::after, .greenflower .peak, .greenflower .petal::before, .greenflower .petal::after { background: #d5e4b6; }
+.blueflower::before, .blueflower::after, .blueflower .peak, .blueflower .petal::before, .blueflower .petal::after { background: #a7d3ed; }
+.yellowflower::before, .yellowflower::after, .yellowflower .peak, .yellowflower .petal::before, .yellowflower .petal::after { background: #fedfbc; }
+.purpleflower::before, .purpleflower::after, .purpleflower .peak, .purpleflower .petal::before, .purpleflower .petal::after { background: #f0ccfe; }
+
+/* disable any inner pseudo-shadow on nested branches */
+.branch .branch::after { content: none; }
+
+/* Clip fall leaves + snow to the round “globe” area */
+
+.season-snow {
+  /* they’re already absolute/inset:0 – just mask them */
+  -webkit-mask-image: radial-gradient(
+    circle at 50% 42%,         /* center of the globe */
+    rgba(0,0,0,1) 0%,          /* fully visible in the middle */
+    rgba(0,0,0,1) 50%,         /* radius of the globe (adjust) */
+    rgba(0,0,0,0) 66%          /* fade to transparent outside */
+  );
+  mask-image: radial-gradient(
+    circle at 50% 42%,
+    rgba(0,0,0,1) 0%,
+    rgba(0,0,0,1) 50%,
+    rgba(0,0,0,0) 66%
+  );
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+
+
+/* ================= Debug helpers (optional; remove when done) ================= */
+/* 
+.branch { outline: 1px dashed rgba(255,255,255,0.25); }
+.branch:hover { outline-color: rgba(255,180,96,0.9); z-index: 10; }
+.tree > .branch1::after, .tree > .branch2::after, .tree > .branch3::after, .tree > .branch4::after, .tree > .branch5::after {
+  position: absolute; left: 4px; top: -18px; font: 600 11px/1 ui-monospace,monospace;
+  color: #ffd59a; text-shadow: 0 1px 2px rgba(0,0,0,.45);
+}
+.tree > .branch1::after { content: "branch1"; }
+.tree > .branch2::after { content: "branch2"; }
+.tree > .branch3::after { content: "branch3"; }
+.tree > .branch4::after { content: "branch4"; }
+.tree > .branch5::after { content: "branch5"; }
+.branch > .branch.branch-inner1::after, .branch > .branch.branch-inner2::after, .branch > .branch.branch-inner3::after, .branch > .branch.branch-inner4::after {
+  position: absolute; left: 4px; top: -14px; font: 600 10px/1 ui-monospace,monospace; color: #9ae2ff; text-shadow: 0 1px 2px rgba(0,0,0,.45);
+}
+.branch > .branch.branch-inner1::after { content: "inner1"; }
+.branch > .branch.branch-inner2::after { content: "inner2"; }
+.branch > .branch.branch-inner3::after { content: "inner3"; }
+.branch > .branch.branch-inner4::after { content: "inner4"; } */
+
+/* ===== DEBUG: hard-pause & force SUMMER visuals ===== */
+
+/* 1) Freeze everything (no CSS animations or transitions) */
+/* *,
+*::before,
+*::after {
+  animation-play-state: paused !important;
+  transition: none !important;
+} */
+
+/* 2) Force summer variables so the tree looks full while paused */
+/* .background {
+  --season-scale: 1 !important;
+  --leaf-opacity: 1 !important;
+  --flower-opacity: 1 !important;
+  --leaf-color: #7fd58a !important;
+} */
+
+/* 3) Neutralize any fall/winter color filters that might be set by class */
+/* .flower,
+.heart,
+.tulip {
+  filter: none !important;
+  opacity: 1 !important;
+} */
