@@ -35,9 +35,21 @@
     height:var(--header-h);
     display:flex; align-items:center; justify-content:space-between;
     gap:1rem; padding:0 20px;
-    background:rgba(10,12,18,.55);
+    background:rgba(10,12,18,.85); /* Fallback for browsers without backdrop-filter */
     backdrop-filter:saturate(140%) blur(10px);
     border-bottom:0.1px solid rgba(255,255,255,.06);
+  }
+  /* Darker fallback for browsers without backdrop-filter support */
+  @supports not (backdrop-filter: blur(10px)) {
+    .site-header {
+      background:rgba(10,12,18,.95);
+    }
+  }
+  /* Apply original semi-transparent background for browsers with backdrop-filter */
+  @supports (backdrop-filter: blur(10px)) {
+    .site-header {
+      background:rgba(10,12,18,.55);
+    }
   }
   .brand{font-weight:700; letter-spacing:.2px; color:#ffffffac; text-decoration:none}
   .nav{display:flex; gap:12px}
@@ -114,17 +126,22 @@ html { scroll-behavior: smooth; }
 
 /* active-state helper (optional; add .is-active to the <a> whose section is in view) */
 .hero-index a.is-active span{
+  color: var(--accent1); /* Fallback for browsers without background-clip support */
   background: linear-gradient(90deg, var(--accent1), var(--accent2));
-  -webkit-background-clip: text; background-clip:text;
-  -webkit-text-fill-color: transparent; color: transparent;
+  -webkit-background-clip: text;
+  background-clip:text;
+  -webkit-text-fill-color: transparent;
 }
 
-/* responsiveness: 3 / 2 columns on smaller screens */
-@media (max-width: 900px){
-  .hero-index ul{ grid-template-columns: repeat(3, 1fr); gap: 22px; }
+/* responsiveness: smooth progression for all screen sizes */
+@media (max-width: 1024px){
+  .hero-index ul{ grid-template-columns: repeat(4, 1fr); gap: 20px; }
+}
+@media (max-width: 768px){
+  .hero-index ul{ grid-template-columns: repeat(3, 1fr); gap: 18px; }
 }
 @media (max-width: 560px){
-  .hero-index ul{ grid-template-columns: repeat(2, 1fr); }
+  .hero-index ul{ grid-template-columns: repeat(2, 1fr); gap: 16px; }
   .hero-index{ margin-top: 20px; }
 }
 
@@ -137,7 +154,8 @@ html { scroll-behavior: smooth; }
     padding:64px 64px 48px;
     position:relative; overflow:hidden;
     background:transparent; /* let page wash show through */
-    height: 90vh; 
+    min-height: 500px; /* Prevent squishing on mobile landscape */
+    height: 90vh;
   }
   .hero-left{ 
     display:flex; 
@@ -150,7 +168,10 @@ html { scroll-behavior: smooth; }
     align-items:center }
   
   .flower-wrap{
-    width:450px; height:450px; margin:0;
+    width: min(450px, 80vw);
+    height: min(450px, 80vw);
+    aspect-ratio: 1 / 1;
+    margin:0;
   }
   .flower-wrap canvas{ display:block; max-width:100%; height:auto }
   
@@ -162,9 +183,11 @@ html { scroll-behavior: smooth; }
     color:#e2e8f0;
   }
   .accent{
+    color:var(--accent1); /* Fallback for browsers without background-clip support */
     background:linear-gradient(90deg,var(--accent1),var(--accent2));
-    -webkit-background-clip:text; background-clip:text;
-    -webkit-text-fill-color:transparent; 
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
     font-weight:800;
   }
   .caret{
@@ -492,6 +515,14 @@ html { scroll-behavior: smooth; }
   gap: 24px;
 }
 
+/* Responsive expertise grid */
+@media (max-width: 1024px) {
+  .xp-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .xp-grid { grid-template-columns: 1fr; }
+}
+
 /* card */
 .xp-card {
   background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
@@ -526,6 +557,7 @@ html { scroll-behavior: smooth; }
   font-weight: 800;
   font-size: 1.2rem;
   line-height: 1.1;
+  color: var(--accent1); /* Fallback for browsers without background-clip support */
 
   background: linear-gradient(
     90deg,
@@ -538,7 +570,6 @@ html { scroll-behavior: smooth; }
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  color: transparent;
 
   animation: xp-sheen 6s ease-in-out infinite;
 }
@@ -638,12 +669,15 @@ html { scroll-behavior: smooth; }
 /* meta */
 .proj-card .meta{ padding:16px 16px 18px; }
 .proj-card .title{
-  margin:0 0 6px; color:#eaf0f7; font-size:1.25rem; font-weight:800;
+  margin:0 0 6px; font-size:1.25rem; font-weight:800;
   display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow:hidden;
   /* gradient text option (subtle) */
+  color: #eaf0f7; /* Fallback for browsers without background-clip support */
   background: linear-gradient(90deg, var(--accent1), var(--accent2), var(--accent1));
   background-size: 200% 100%; background-position: 0% 0%;
-  -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:transparent;
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
 }
 .proj-card:hover .title{ background-position: 100% 0; transition: background-position .8s ease; }
 

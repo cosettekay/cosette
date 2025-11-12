@@ -11,7 +11,6 @@ This portfolio highlights my journey as a **Software Engineer** with experience 
 - **Web & Mobile Development** – creating responsive web applications and Android/iOS apps
 - **AI/LLM Projects** – experimenting with LLM models, ML libraries and chatbots
 
-
 ## 📬 Connect  
 - [LinkedIn](https://www.linkedin.com/in/cosette-tabucol/)  
 - [GitHub](https://github.com/cosettekay)  
