@@ -17,9 +17,9 @@ class TypingAnimation {
 
     // Season color palettes (gradient colors)
     this.seasonColors = {
-      spring: { color1: '#7dd65f', color2: '#a8e890' },    // Fresh greens
-      summer: { color1: '#49ad55', color2: '#7fd58a' },    // Deep vibrant greens
-      fall: { color1: '#ff9837', color2: '#f1a24c' },      // Warm oranges
+      spring: { color1: '#a8ddb5', color2: '#ffb3c6' },    // Pastel green and pastel pink
+      summer: { color1: '#7bc043', color2: '#5dade2' },    // Bright grass green and bright sky blue
+      fall: { color1: '#ff9837', color2: '#dcdb84' },      // Warm oranges
       winter: { color1: '#7ec4f5', color2: '#c4e4f7' },    // Cool blues
       dormant: { color1: '#7c3aed', color2: '#38bdf8' }    // Default purple-blue
     };

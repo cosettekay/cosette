@@ -19,8 +19,8 @@
     --g2y:78%;
 
     /* Season-synced colors (updated dynamically by typing animation) */
-    --accent-season1: #7c3aed; /* Default: purple */
-    --accent-season2: #38bdf8; /* Default: blue */
+    --accent-season1: #a8ddb5; /* Default: pastel green (spring) */
+    --accent-season2: #ffb3c6; /* Default: pastel pink (spring) */
   }
   
   /* ========== Base ========== */
