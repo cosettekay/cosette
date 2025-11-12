@@ -4,10 +4,15 @@
     --card:#11121a;
     --text:#e5e7eb;
     --muted:#a1a1aa;
-    --accent1:#7c3aed; /* purple */
-    --accent2:#38bdf8; /* blue   */
-    --accent3:#8045d4; /* bright purple  */
-    --accent4: #3c68ee; /* bright blue */
+    /* Old Theme */
+    /* --accent1:#7c3aed;*/
+    /* --accent2:#38bdf8;  */
+    /* --accent3:#8045d4; */
+    /* --accent4: #3c68ee; */
+    --accent1:#85b7ed;
+    --accent2:#e2c179;
+    --accent3:#8bd78f; 
+    --accent4: #ee9cb6;
     --header-h:64px;
 
     --g1y:22%;
