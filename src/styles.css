@@ -710,9 +710,21 @@ html { scroll-behavior: smooth; }
     .about__right{ order:-1 } /* image first on mobile (optional) */
   }
   @media (max-width:900px){
-    .hero-split{ flex-direction:column; padding:40px 20px 40px; gap:20px }
-    .hero-right{ order:-1 }
-    #tree-container{ width:min(76vmin,560px); height:min(76vmin,560px) }
+    .hero-split{
+      flex-direction:column;
+      padding:40px 20px 40px;
+      gap:24px;
+      height:auto !important;
+      min-height:auto !important;
+      align-items:center;
+      overflow:visible;
+    }
+    .hero-left{ justify-content:flex-start; width:100%; }
+    .hero-right{ order:-1; width:100%; display:flex; justify-content:center; flex-shrink:0; }
+    #tree-container{ width:min(55vmin,300px); height:min(55vmin,300px) }
+    /* Scale down the tree frame itself on mobile */
+    .season-frame{ width:20rem !important; height:20rem !important; }
+    .background{ width:280px !important; height:356px !important; }
     .nav a{ width:36px; height:36px }
   }
   @media (max-width:600px){
