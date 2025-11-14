@@ -710,9 +710,9 @@ html { scroll-behavior: smooth; }
     .about__right{ order:-1 } /* image first on mobile (optional) */
   }
   @media (max-width:900px){
-    .hero-split{ flex-direction:column; padding:40px 20px 40px; gap:32px; height:auto; min-height:100vh }
-    .hero-right{ order:-1; flex-shrink:0 }
-    #tree-container{ width:min(50vmin,320px); height:min(50vmin,320px) }
+    .hero-split{ flex-direction:column; padding:40px 20px 40px; gap:20px }
+    .hero-right{ order:-1 }
+    #tree-container{ width:min(76vmin,560px); height:min(76vmin,560px) }
     .nav a{ width:36px; height:36px }
   }
   @media (max-width:600px){
