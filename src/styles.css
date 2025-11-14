@@ -713,17 +713,17 @@ html { scroll-behavior: smooth; }
     .hero-split{
       flex-direction:column;
       padding:80px 20px 40px;
-      gap:40px;
+      gap:20px;
       height:auto !important;
       min-height:auto !important;
       overflow:visible;
     }
     .hero-left{ width:100%; }
-    .hero-right{ order:-1; width:100%; display:flex; justify-content:center; flex-shrink:0; }
+    .hero-right{ order:-1; width:100%; display:flex; justify-content:center; flex-shrink:0; margin-bottom:20px; }
     #tree-container{
       width:min(50vw,280px);
       height:min(50vw,280px);
-      transform:scale(0.7);
+      transform:scale(0.55);
       transform-origin:center center;
     }
     .nav a{ width:36px; height:36px }
