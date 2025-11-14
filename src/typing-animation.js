@@ -21,7 +21,7 @@ class TypingAnimation {
       summer: { color1: '#7bc043', color2: '#5dade2' },    // Bright grass green and bright sky blue
       fall: { color1: '#ff9837', color2: '#dcdb84' },      // Warm oranges
       winter: { color1: '#7ec4f5', color2: '#c4e4f7' },    // Cool blues
-      dormant: { color1: '#7c3aed', color2: '#38bdf8' }    // Default purple-blue
+      dormant: { color1: '#a8ddb5', color2: '#ffb3c6' }    // Same as spring for seamless transition
     };
 
     this.currentSeason = 'spring'; // Default season
